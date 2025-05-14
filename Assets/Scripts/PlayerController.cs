@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Transform firePoint;
     [SerializeField] private int maxAirShots = 2;
     [SerializeField] private Image currentBulletImage;
+    [SerializeField] float check = 0f;
     private int remainingAirShots;
 
     private bool isGrounded = false;
@@ -52,6 +53,8 @@ public class PlayerController : MonoBehaviour
         bullet.GetComponent<Rigidbody2D>().AddForce(direction * 500f);
 
         rb.AddForce(-direction * recoilForce, ForceMode2D.Impulse);
+        Debug.Log(-direction * recoilForce);
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {

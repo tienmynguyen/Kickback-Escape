@@ -42,23 +42,29 @@ public class GameManager : MonoBehaviour
         mouseWorldPos.z = 0f; // Loại bỏ Z vì game 2D
 
         // Lấy vị trí nhân vật
-        Vector3 playerPos = player.position;
 
-        // Tính khoảng cách
-        float distance = Vector3.Distance(playerPos, mouseWorldPos);
-
-        // Chuyển thành giá trị từ 0 đến 1 (0: gần, 1: xa)
-        float t = Mathf.InverseLerp(minDistance, maxDistance, distance);
-
-        // Màu từ xanh (gần) đến đỏ (xa)
-        Color color = Color.Lerp(Color.green, Color.red, t);
-        color.a = opacity; // giữ độ mờ như bạn đã đặt
-
-        // Gán màu cho ảnh
-        var image = cursorRect.GetComponent<Image>();
-        if (image != null)
+        if (player != null)
         {
-            image.color = color;
+            Vector3 playerPos = player.position;
+
+            float distance = Vector3.Distance(playerPos, mouseWorldPos);
+
+            // Chuyển thành giá trị từ 0 đến 1 (0: gần, 1: xa)
+            float t = Mathf.InverseLerp(minDistance, maxDistance, distance);
+
+            // Màu từ xanh (gần) đến đỏ (xa)
+            Color color = Color.Lerp(Color.green, Color.red, t);
+            color.a = opacity; // giữ độ mờ như bạn đã đặt
+
+            // Gán màu cho ảnh
+            var image = cursorRect.GetComponent<Image>();
+            if (image != null)
+            {
+                image.color = color;
+            }
         }
+
+
+
     }
 }

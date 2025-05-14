@@ -40,9 +40,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 2438189253
     locked: 0
@@ -51,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 4243163937
+    locked: 0
+  - name: Trap
+    uniqueID: 2486183295
     locked: 0
   - name: UI
     uniqueID: 3510341321
@@ -63,4 +63,7 @@ TagManager:
     locked: 0
   - name: Gun
     uniqueID: 3701515107
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
