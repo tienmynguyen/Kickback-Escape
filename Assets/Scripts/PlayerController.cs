@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Transform firePoint;
     [SerializeField] private int maxAirShots = 2;
     [SerializeField] private Image currentBulletImage;
-    [SerializeField] float check = 0f;
     private int remainingAirShots;
 
     private bool isGrounded = false;

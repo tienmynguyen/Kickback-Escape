@@ -1,14 +1,29 @@
-
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public RectTransform cursorRect;
     [Range(0f, 1f)] public float opacity = 0.5f;
-    [SerializeField] private Transform player; // Tham chiếu đến nhân vật
-    [SerializeField] private float minDistance = 1f; // Khoảng cách tối thiểu (để chuột có màu xanh)
-    [SerializeField] private float maxDistance = 10f; // Khoảng cách tối đa (để chuột có màu đỏ)
+    [SerializeField] private Transform player;
+    [SerializeField] private float minDistance = 1f;
+    [SerializeField] private float maxDistance = 10f;
+    public static GameManager instance;
+
+    void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded; // Đăng ký sự kiện
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -16,16 +31,19 @@ public class GameManager : MonoBehaviour
         SetOpacity(opacity);
     }
 
-    // Update is called once per frame
     void Update()
     {
+        if (cursorRect == null || player == null) return;
+
         Vector2 mousePos = Input.mousePosition;
         cursorRect.position = mousePos;
 
         UpdateCursorColor();
     }
+
     void SetOpacity(float alpha)
     {
+        if (cursorRect == null) return;
         var image = cursorRect.GetComponent<Image>();
         if (image != null)
         {
@@ -37,34 +55,40 @@ public class GameManager : MonoBehaviour
 
     void UpdateCursorColor()
     {
-        // Lấy vị trí chuột trong thế giới
+        if (cursorRect == null || player == null) return;
+
         Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseWorldPos.z = 0f; // Loại bỏ Z vì game 2D
+        mouseWorldPos.z = 0f;
 
-        // Lấy vị trí nhân vật
+        Vector3 playerPos = player.position;
+        float distance = Vector3.Distance(playerPos, mouseWorldPos);
 
-        if (player != null)
+        float t = Mathf.InverseLerp(minDistance, maxDistance, distance);
+        Color color = Color.Lerp(Color.green, Color.red, t);
+        color.a = opacity;
+
+        var image = cursorRect.GetComponent<Image>();
+        if (image != null)
         {
-            Vector3 playerPos = player.position;
-
-            float distance = Vector3.Distance(playerPos, mouseWorldPos);
-
-            // Chuyển thành giá trị từ 0 đến 1 (0: gần, 1: xa)
-            float t = Mathf.InverseLerp(minDistance, maxDistance, distance);
-
-            // Màu từ xanh (gần) đến đỏ (xa)
-            Color color = Color.Lerp(Color.green, Color.red, t);
-            color.a = opacity; // giữ độ mờ như bạn đã đặt
-
-            // Gán màu cho ảnh
-            var image = cursorRect.GetComponent<Image>();
-            if (image != null)
-            {
-                image.color = color;
-            }
+            image.color = color;
         }
+    }
 
+    // Gán lại các đối tượng sau khi chuyển scene
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Tự động tìm lại các đối tượng theo tag hoặc name
+        GameObject playerObj = GameObject.FindWithTag("Player");
+        if (playerObj != null) player = playerObj.transform;
 
+        GameObject cursorObj = GameObject.Find("Cursor"); // hoặc gán theo tag
+        if (cursorObj != null) cursorRect = cursorObj.GetComponent<RectTransform>();
 
+        SetOpacity(opacity); // Gán lại độ mờ nếu cần
+    }
+
+    void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 }
