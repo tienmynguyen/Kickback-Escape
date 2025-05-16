@@ -5653,8 +5653,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6666084012888085470, guid: cc85a06ee800e5940b522079cdea7551, type: 3}
+      propertyPath: soundEffects.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666084012888085470, guid: cc85a06ee800e5940b522079cdea7551, type: 3}
+      propertyPath: soundEffects.Array.data[3].groupID
+      value: teleport
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666084012888085470, guid: cc85a06ee800e5940b522079cdea7551, type: 3}
+      propertyPath: soundEffects.Array.data[3].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6666084012888085470, guid: cc85a06ee800e5940b522079cdea7551, type: 3}
       propertyPath: soundEffects.Array.data[1].clips.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 34ed5d5b49c38b649b1dce6467be0734, type: 3}
+    - target: {fileID: 6666084012888085470, guid: cc85a06ee800e5940b522079cdea7551, type: 3}
+      propertyPath: soundEffects.Array.data[3].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 06fb6b02d33df44408526b7daac6c1bc, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc85a06ee800e5940b522079cdea7551, type: 3}

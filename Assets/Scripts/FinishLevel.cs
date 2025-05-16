@@ -14,6 +14,7 @@ public class FinishLevel : MonoBehaviour
         {
             if (goNextLevel)
             {
+                SoundManager.Instance.PlaySound2D("teleport");
                 SaveManager.Instance.Save(nextLevel);
                 ScenesController.instance.NextLevel();
             }

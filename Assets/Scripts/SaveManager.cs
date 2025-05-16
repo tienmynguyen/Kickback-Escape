@@ -49,6 +49,7 @@ public class SaveManager : MonoBehaviour
             GameData data = JsonUtility.FromJson<GameData>(json);
 
             Debug.Log($"Loaded from slot {slot}, Level: {data.level}");
+            MusicManager.Instance.PlayMusic("Game");
 
             SceneManager.LoadScene("level " + data.level.ToString());
         }
