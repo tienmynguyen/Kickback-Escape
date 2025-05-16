@@ -9,8 +9,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float minDistance = 1f;
     [SerializeField] private float maxDistance = 10f;
+    public SaveManager saveManager;
     public static GameManager instance;
-
     void Awake()
     {
         if (instance == null)
@@ -91,4 +91,5 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+
 }

@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public Transform firePoint;
     [SerializeField] private int maxAirShots = 2;
     [SerializeField] private Image currentBulletImage;
+    [SerializeField] GameObject bloodprefabs;
     private int remainingAirShots;
 
     private bool isGrounded = false;
@@ -43,9 +44,12 @@ public class PlayerController : MonoBehaviour
             remainingAirShots = maxAirShots;
             currentBulletImage.fillAmount = (float)remainingAirShots / (float)maxAirShots;
         }
+
     }
+
     void Shoot()
     {
+        SoundManager.Instance.PlaySound2D("bang");
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
@@ -59,6 +63,9 @@ public class PlayerController : MonoBehaviour
     {
         if (other.CompareTag("Trap"))
         {
+            SoundManager.Instance.PlaySound2D("takedmg");
+            GameObject blood = Instantiate(bloodprefabs, transform.position, Quaternion.identity);
+            Destroy(blood, 1f);
             // Reset vị trí
             transform.position = startPosition;
 
@@ -70,7 +77,9 @@ public class PlayerController : MonoBehaviour
             }
 
             // (Tùy chọn) Thêm hiệu ứng, âm thanh, animation tại đây
+
         }
+
     }
 
     public void SetGrounded(bool grounded)

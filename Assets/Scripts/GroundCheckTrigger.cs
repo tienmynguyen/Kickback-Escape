@@ -8,7 +8,9 @@ public class GroundCheckTrigger : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            SoundManager.Instance.PlaySound2D("thump");
             player.SetGrounded(true);
+
         }
     }
 

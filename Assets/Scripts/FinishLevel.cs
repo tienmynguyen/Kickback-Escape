@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class FinishLevel : MonoBehaviour
 {
+
     [SerializeField] bool goNextLevel;
     [SerializeField] string levelName;
+    [SerializeField] int nextLevel;
     private void OnTriggerEnter2D(Collider2D collition)
     {
         if (collition.CompareTag("Player"))
         {
             if (goNextLevel)
             {
+                SaveManager.Instance.Save(nextLevel);
                 ScenesController.instance.NextLevel();
             }
             else
