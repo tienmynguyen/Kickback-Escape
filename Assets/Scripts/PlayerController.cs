@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
+    private Animator animator;
     [SerializeField] public float recoilForce = 35f;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firePoint;
@@ -15,8 +16,15 @@ public class PlayerController : MonoBehaviour
     private Vector3 startPosition;
     private Rigidbody2D rb;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     void Start()
     {
+
+
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         remainingAirShots = maxAirShots;
@@ -33,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
             if (!isGrounded)
             {
-                remainingAirShots--;
+                if (remainingAirShots < 99) remainingAirShots--;
                 currentBulletImage.fillAmount = (float)remainingAirShots / (float)maxAirShots;
             }
 
@@ -49,6 +57,9 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
+
+        animator.SetTrigger("Shoot");
+
         SoundManager.Instance.PlaySound2D("bang");
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position).normalized;
 
@@ -78,6 +89,15 @@ public class PlayerController : MonoBehaviour
 
             // (Tùy chọn) Thêm hiệu ứng, âm thanh, animation tại đây
 
+        }
+        if (other.CompareTag("Apple"))
+        {
+            SoundManager.Instance.PlaySound2D("collect");
+            maxAirShots = 999999999;
+            Destroy(other.gameObject);
+
+
+            currentBulletImage.color = Color.yellow;
         }
 
     }

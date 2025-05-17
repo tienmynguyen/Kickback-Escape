@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Trap
+  - Apple
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: Trap
     uniqueID: 2486183295
+    locked: 0
+  - name: portal
+    uniqueID: 3655966409
     locked: 0
   - name: UI
     uniqueID: 3510341321
