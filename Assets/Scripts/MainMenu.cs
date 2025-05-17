@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using TMPro;
 public class MainMenu : MonoBehaviour
 {
+    public static MainMenu Instance;
     public AudioMixer audioMixer;
     public Slider musicSlider;
     public Slider sfxSlider;
@@ -25,8 +26,8 @@ public class MainMenu : MonoBehaviour
     // Update is called once per frame
     public void NewGame()
     {
-        SceneManager.LoadScene("level 1");
-        MusicManager.Instance.PlayMusic("Game");
+        SceneManager.LoadScene("CutSceneIntro");
+        // MusicManager.Instance.PlayMusic("Game");
     }
     public void Quit()
     {
@@ -57,7 +58,7 @@ public class MainMenu : MonoBehaviour
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume");
     }
 
-    void LoadAndDisplaySlots()
+    public void LoadAndDisplaySlots()
     {
         for (int i = 1; i <= 3; i++)
         {

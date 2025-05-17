@@ -6,6 +6,7 @@ public class SaveManager : MonoBehaviour
     public int currentSaveSlot = -1;
     public int level = -1;
     public static SaveManager Instance;
+    public MainMenu mainMenu;
     private void Awake()
     {
         if (Instance != null)
@@ -41,7 +42,7 @@ public class SaveManager : MonoBehaviour
         string json = PlayerPrefs.GetString($"SaveSlot_{slot}", "");
         if (string.IsNullOrEmpty(json))
         {
-            SceneManager.LoadScene("level 1");
+            SceneManager.LoadScene("CutSceneIntro");
 
         }
         else
@@ -66,6 +67,18 @@ public class SaveManager : MonoBehaviour
 
         string json = PlayerPrefs.GetString($"SaveSlot_{slot}");
         return JsonUtility.FromJson<GameData>(json);
+    }
+    public void DeleteSaveSlot(int slot)
+    {
+        string key = $"SaveSlot_{slot}";
+        if (PlayerPrefs.HasKey(key))
+        {
+            PlayerPrefs.DeleteKey(key);
+            PlayerPrefs.Save();
+            Debug.Log($"Slot {slot} deleted.");
+        }
+        mainMenu.LoadAndDisplaySlots();
+
     }
 
 

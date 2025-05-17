@@ -20,8 +20,12 @@ public class FinishLevel : MonoBehaviour
             }
             else
             {
+                if (levelName == "end")
+                    MusicManager.Instance.PlayMusic("Main Menu");
                 ScenesController.instance.LoadScene(levelName);
+
             }
+
         }
     }
 }
