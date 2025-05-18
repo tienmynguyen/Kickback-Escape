@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float minDistance = 1f;
     [SerializeField] private float maxDistance = 10f;
-    public SaveManager saveManager;
+
+    [SerializeField] GameObject pauseMenu;
+
     public static GameManager instance;
     void Awake()
     {
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         Cursor.visible = false;
         SetOpacity(opacity);
+        pauseMenu.SetActive(false);
     }
 
     void Update()
@@ -39,6 +42,13 @@ public class GameManager : MonoBehaviour
         cursorRect.position = mousePos;
 
         UpdateCursorColor();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
     }
 
     void SetOpacity(float alpha)
@@ -90,6 +100,19 @@ public class GameManager : MonoBehaviour
     void OnDestroy()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void ResumeGame()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void MainMenu()
+    {
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Main Menu");
+
     }
 
 }

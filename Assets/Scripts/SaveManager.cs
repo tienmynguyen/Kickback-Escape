@@ -6,7 +6,6 @@ public class SaveManager : MonoBehaviour
     public int currentSaveSlot = -1;
     public int level = -1;
     public static SaveManager Instance;
-    public MainMenu mainMenu;
     private void Awake()
     {
         if (Instance != null)
@@ -77,7 +76,7 @@ public class SaveManager : MonoBehaviour
             PlayerPrefs.Save();
             Debug.Log($"Slot {slot} deleted.");
         }
-        mainMenu.LoadAndDisplaySlots();
+
 
     }
 

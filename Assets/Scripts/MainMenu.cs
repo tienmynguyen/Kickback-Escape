@@ -18,8 +18,14 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        Time.timeScale = 1f;
+
         LoadVolume();
         MusicManager.Instance.PlayMusic("Main Menu");
+        LoadAndDisplaySlots();
+    }
+    private void Update()
+    {
         LoadAndDisplaySlots();
     }
 
@@ -81,6 +87,23 @@ public class MainMenu : MonoBehaviour
                 case 3: slot3.text = display; break;
             }
         }
+    }
+    public void check()
+    {
+        Debug.Log("MainMenu Start() called");
+    }
+
+    public void LoadLevel(int slot)
+    {
+        SaveManager.Instance.Load(slot);
+    }
+    public void PlaySound(string name)
+    {
+        SoundManager.Instance.PlaySound2D(name);
+    }
+    public void DeleteFileSave(int slot)
+    {
+        SaveManager.Instance.DeleteSaveSlot(slot);
     }
 
 }
