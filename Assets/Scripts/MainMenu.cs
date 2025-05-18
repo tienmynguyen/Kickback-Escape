@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Video;
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu Instance;
@@ -15,6 +16,8 @@ public class MainMenu : MonoBehaviour
     public TMP_Text slot2;
     public TMP_Text slot3;
 
+    public VideoPlayer videoPlayer;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -23,6 +26,10 @@ public class MainMenu : MonoBehaviour
         LoadVolume();
         MusicManager.Instance.PlayMusic("Main Menu");
         LoadAndDisplaySlots();
+
+        string videoPath = System.IO.Path.Combine(Application.streamingAssetsPath, "backgroundmenuvideo.webm");
+        videoPlayer.url = videoPath;
+        videoPlayer.Play();
     }
     private void Update()
     {

@@ -808,7 +808,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483785792}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7f96aa54517cbe64d93b2a92ef106ddf, type: 3}
+  m_VideoClip: {fileID: 0}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -1579,6 +1579,7 @@ MonoBehaviour:
   slot1: {fileID: 1187374614}
   slot2: {fileID: 1291833507}
   slot3: {fileID: 784676328}
+  videoPlayer: {fileID: 483785793}
 --- !u!114 &784676328 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3273749321611130884, guid: eb4a43a500210004f9eb93bd40fb8999, type: 3}
