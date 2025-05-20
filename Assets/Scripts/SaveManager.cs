@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class SaveManager : MonoBehaviour
@@ -33,7 +34,66 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.Save();
         this.level = level;
     }
+    public void AddDeath()
+    {
+        Debug.Log("AddDeath called");
+        // Load dữ liệu hiện tại
+        GameData gameData = LoadGameData(currentSaveSlot);
+        if (gameData == null)
+        {
+            gameData = new GameData();
+            gameData.deathByLevel = new DeathByLevel[0];
+        }
 
+        gameData.deathCount++; // Tổng số lần chết
+
+        bool levelFound = false;
+
+        for (int i = 0; i < gameData.deathByLevel.Length; i++)
+        {
+            if (gameData.deathByLevel[i].level == level)
+            {
+                gameData.deathByLevel[i].deathCount++;
+                levelFound = true;
+                break;
+            }
+        }
+
+        if (!levelFound)
+        {
+            DeathByLevel newDeath = new DeathByLevel
+            {
+                level = level,
+                deathCount = 1
+            };
+
+            int oldLength = gameData.deathByLevel.Length;
+            DeathByLevel[] updated = new DeathByLevel[oldLength + 1];
+            gameData.deathByLevel.CopyTo(updated, 0);
+            updated[oldLength] = newDeath;
+            gameData.deathByLevel = updated;
+        }
+
+        // Lưu lại dữ liệu mới
+        string json = JsonUtility.ToJson(gameData);
+        PlayerPrefs.SetString($"SaveSlot_{currentSaveSlot}", json);
+        PlayerPrefs.Save();
+    }
+
+    public int GetCurrentLevelDeathCount()
+    {
+        GameData data = LoadGameData(currentSaveSlot);
+        if (data == null || data.deathByLevel == null)
+            return 0;
+
+        foreach (var d in data.deathByLevel)
+        {
+            if (d.level == level) // 'level' là level hiện tại đã lưu
+                return d.deathCount;
+        }
+
+        return 0; // Nếu chưa có dữ liệu level hiện tại
+    }
 
     public void Load(int slot)
     {

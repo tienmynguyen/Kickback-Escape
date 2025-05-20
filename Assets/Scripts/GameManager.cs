@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
 public class GameManager : MonoBehaviour
 {
     public RectTransform cursorRect;
@@ -114,5 +113,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
 
     }
+
+
 
 }

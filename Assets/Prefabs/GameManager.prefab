@@ -712,6 +712,7 @@ MonoBehaviour:
   minDistance: 1
   maxDistance: 10
   pauseMenu: {fileID: 7542557719032354569}
+  deathCount: {fileID: 0}
 --- !u!114 &7371029306483364823
 MonoBehaviour:
   m_ObjectHideFlags: 0

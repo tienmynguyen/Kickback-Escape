@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image currentBulletImage;
     [SerializeField] GameObject bloodprefabs;
     private int remainingAirShots;
-
+    private bool isDead = false;
     private bool isGrounded = false;
     private Vector3 startPosition;
     private Rigidbody2D rb;
@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position).normalized;
 
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        bullet.GetComponent<Rigidbody2D>().AddForce(direction * 500f);
+        bullet.GetComponent<Rigidbody2D>().AddForce(direction * 1000f);
 
         rb.AddForce(-direction * recoilForce, ForceMode2D.Impulse);
         Debug.Log(-direction * recoilForce);
@@ -72,9 +72,11 @@ public class PlayerController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Trap"))
+        if (other.CompareTag("Trap") && !isDead)
         {
+            isDead = true;
             SoundManager.Instance.PlaySound2D("takedmg");
+            SaveManager.Instance.AddDeath();
             GameObject blood = Instantiate(bloodprefabs, transform.position, Quaternion.identity);
             Destroy(blood, 1f);
             // Reset vị trí
@@ -99,7 +101,12 @@ public class PlayerController : MonoBehaviour
 
             currentBulletImage.color = Color.yellow;
         }
+        Invoke(nameof(ResetDeathState), 0.5f);
 
+    }
+    void ResetDeathState()
+    {
+        isDead = false;
     }
 
     public void SetGrounded(bool grounded)
