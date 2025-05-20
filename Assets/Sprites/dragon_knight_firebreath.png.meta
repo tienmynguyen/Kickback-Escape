@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4b36337673e841e4483f929dd10703b0
+guid: b107336b0d4a2584cbaef2b3edc43874
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dragon_knight_attack_1_0
+      name: dragon_knight_firebreath_0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5417ab60a1dac44f88f3c1cf8549d64
-      internalID: 1811557367
+      spriteID: 680350c302415ef45aef0ef31b1eb7c9
+      internalID: 461748774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon_knight_attack_1_1
+      name: dragon_knight_firebreath_1
       rect:
         serializedVersion: 2
         x: 480
@@ -164,17 +164,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 840931510432bcb46bbc78755a257835
-      internalID: 333195715
+      spriteID: 9f0468d0b3fcbf54cb66564092265053
+      internalID: -1827851045
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon_knight_attack_1_2
+      name: dragon_knight_firebreath_2
       rect:
         serializedVersion: 2
-        x: 960
+        x: 964
         y: 0
         width: 480
         height: 320
@@ -185,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8e1da42d4afea94b8bd56873c83d1a9
-      internalID: 1435222224
+      spriteID: 1579b7c3f351e864b82e8ad7158bbcf9
+      internalID: -239589332
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon_knight_attack_1_3
+      name: dragon_knight_firebreath_3
       rect:
         serializedVersion: 2
         x: 1440
@@ -206,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fff61d08a92938447bf93bc43b7d29a5
-      internalID: 379492297
+      spriteID: d0724b62c1235d34e9634c15cdcf8dce
+      internalID: 1990440127
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon_knight_attack_1_4
+      name: dragon_knight_firebreath_4
       rect:
         serializedVersion: 2
         x: 1920
@@ -227,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f1b3d34ddcc1f84c8221416ca4ddf74
-      internalID: -151341481
+      spriteID: d990490484ba3194fabb3bebbcf472c2
+      internalID: -909788191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dragon_knight_attack_1_5
+      name: dragon_knight_firebreath_5
       rect:
         serializedVersion: 2
         x: 2400
@@ -248,8 +248,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7a36104ed402564fbd020a8cf6a65d8
-      internalID: -1336035838
+      spriteID: 9cd4a0090afcffc4095142f3cb729330
+      internalID: -1300006863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_knight_firebreath_6
+      rect:
+        serializedVersion: 2
+        x: 2880
+        y: 0
+        width: 480
+        height: 320
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bef4afc4d7d5544cb891ca6969d9ea5
+      internalID: 2068149258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_knight_firebreath_7
+      rect:
+        serializedVersion: 2
+        x: 3360
+        y: 0
+        width: 480
+        height: 320
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 382f2dbb1b659904e94403b644babb50
+      internalID: 1668883524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_knight_firebreath_8
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 0
+        width: 480
+        height: 320
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89821e23d0750d147a24ed0c413a8281
+      internalID: -410002678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_knight_firebreath_9
+      rect:
+        serializedVersion: 2
+        x: 4320
+        y: 0
+        width: 480
+        height: 320
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 634ff1e0f340d9f4e9df9b62e6a01f11
+      internalID: -21096551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dragon_knight_firebreath_10
+      rect:
+        serializedVersion: 2
+        x: 4800
+        y: 0
+        width: 480
+        height: 320
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f58bc260c5ed044d87615b36f3d513e
+      internalID: 156965706
       vertices: []
       indices: 
       edges: []
@@ -265,12 +370,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dragon_knight_attack_1_0: 1811557367
-      dragon_knight_attack_1_1: 333195715
-      dragon_knight_attack_1_2: 1435222224
-      dragon_knight_attack_1_3: 379492297
-      dragon_knight_attack_1_4: -151341481
-      dragon_knight_attack_1_5: -1336035838
+      dragon_knight_firebreath_0: 461748774
+      dragon_knight_firebreath_1: -1827851045
+      dragon_knight_firebreath_10: 156965706
+      dragon_knight_firebreath_2: -239589332
+      dragon_knight_firebreath_3: 1990440127
+      dragon_knight_firebreath_4: -909788191
+      dragon_knight_firebreath_5: -1300006863
+      dragon_knight_firebreath_6: 2068149258
+      dragon_knight_firebreath_7: 1668883524
+      dragon_knight_firebreath_8: -410002678
+      dragon_knight_firebreath_9: -21096551
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

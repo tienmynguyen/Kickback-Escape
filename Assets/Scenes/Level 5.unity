@@ -32782,15 +32782,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6696182777927965470, guid: db2497cb5bb3c7644bbe1537e39ae407, type: 3}
       propertyPath: levelName
-      value: end
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6696182777927965470, guid: db2497cb5bb3c7644bbe1537e39ae407, type: 3}
       propertyPath: nextLevel
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6696182777927965470, guid: db2497cb5bb3c7644bbe1537e39ae407, type: 3}
       propertyPath: goNextLevel
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6696182777927965471, guid: db2497cb5bb3c7644bbe1537e39ae407, type: 3}
       propertyPath: m_Name

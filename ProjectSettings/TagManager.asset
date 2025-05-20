@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Trap
   - Apple
+  - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -14,7 +16,7 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

@@ -358,7 +358,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -593452189
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 954221092, guid: 4364f0536850aa347bf8a4df97577fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -400,7 +400,7 @@ VideoPlayer:
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
-  m_TargetTexture: {fileID: 8400000, guid: bfb882767cd35ff49afcfe10283d66f5, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: b5384a57cdd439e4da207dfdd5af715a, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
@@ -687,7 +687,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 8400000, guid: bfb882767cd35ff49afcfe10283d66f5, type: 2}
+  m_Texture: {fileID: 8400000, guid: b5384a57cdd439e4da207dfdd5af715a, type: 2}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7560dc419dc754e9e55197a8e7c3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: 3
   recoilForce: 35
   bulletPrefab: {fileID: 4901623495429931218, guid: d09bdcca3d538aa4998e5a643ff541c7, type: 3}
   firePoint: {fileID: 1614636037}

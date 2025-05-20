@@ -136,8 +136,8 @@ TextureImporter:
         y: 0
         width: 480
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -153,12 +153,12 @@ TextureImporter:
       name: dragon_knight_idle_1
       rect:
         serializedVersion: 2
-        x: 480
+        x: 479
         y: 0
         width: 480
         height: 320
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.2414166, y: 0.008868011}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

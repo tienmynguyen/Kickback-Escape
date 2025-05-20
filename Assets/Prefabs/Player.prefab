@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7291746742917841391}
   - component: {fileID: 7291746742917841390}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -593452189
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 954221092, guid: 4364f0536850aa347bf8a4df97577fe0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7291746742947490342}
   - component: {fileID: 7291746742947490340}
   - component: {fileID: 7291746742947490341}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 7291746743339878687}
   - component: {fileID: 7291746743339878680}
   - component: {fileID: 7291746743339878681}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 7291746744035998880}
   - component: {fileID: 7291746744035998881}
   - component: {fileID: 7291746744035998884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -382,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7560dc419dc754e9e55197a8e7c3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHp: 3
   recoilForce: 35
   bulletPrefab: {fileID: 4901623495429931218, guid: d09bdcca3d538aa4998e5a643ff541c7, type: 3}
   firePoint: {fileID: 7291746744905947278}
@@ -421,7 +422,7 @@ GameObject:
   - component: {fileID: 7291746744077214663}
   - component: {fileID: 7291746744077214656}
   - component: {fileID: 7291746744077214657}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: CurrentBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -522,7 +523,7 @@ GameObject:
   - component: {fileID: 7291746744338888944}
   - component: {fileID: 7291746744338888950}
   - component: {fileID: 7291746744338888951}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7291746744905947278}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +629,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7291746744964423660}
   - component: {fileID: 7291746744964423651}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}

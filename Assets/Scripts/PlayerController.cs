@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
+    public int playerHp = 3;
     [SerializeField] public float recoilForce = 35f;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firePoint;
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     }
     void Start()
     {
-
+        playerHp = 3;
 
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
@@ -103,6 +104,12 @@ public class PlayerController : MonoBehaviour
         }
         Invoke(nameof(ResetDeathState), 0.5f);
 
+        if (other.CompareTag("Boss"))
+        {
+
+            TakeDamage();
+        }
+
     }
     void ResetDeathState()
     {
@@ -116,6 +123,35 @@ public class PlayerController : MonoBehaviour
         if (grounded)
         {
             remainingAirShots = maxAirShots;
+        }
+    }
+    public void TakeDamage()
+    {
+        SoundManager.Instance.PlaySound2D("takedmg");
+        GameObject blood = Instantiate(bloodprefabs, transform.position, Quaternion.identity);
+        Destroy(blood, 1f);
+        playerHp--;
+        if (playerHp <= 0)
+        {
+            GameObject bosses = GameObject.FindGameObjectWithTag("Boss");
+            Boss boss = bosses.GetComponent<Boss>();
+            if (boss != null)
+            {
+                boss.ResetBoss();
+            }
+            SaveManager.Instance.AddDeath();
+            // Reset vị trí
+            transform.position = startPosition;
+
+            // Reset vận tốc (tránh bị trôi tiếp sau khi hồi sinh)
+            if (rb != null)
+            {
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+            playerHp = 3;
+
+            // (Tùy chọn) Thêm hiệu ứng, âm thanh, animation tại đây   
         }
     }
 
