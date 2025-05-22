@@ -28,6 +28,12 @@ public class Boss : MonoBehaviour
     void Update()
     {
         bossHPImage.fillAmount = (float)currentHP / (float)bossHP;
+
+        if (isActivated)
+        {
+            LookAtPlayer();
+          
+        }
     }
     void OnDrawGizmosSelected()
     {
@@ -76,19 +82,18 @@ public class Boss : MonoBehaviour
     }
     public void LookAtPlayer()
     {
-        Vector3 flipped = transform.localScale;
-        flipped.z *= -1f;
+        Vector3 scale = transform.localScale;
 
         if (transform.position.x < player.position.x && isFlipped)
         {
-            transform.localScale = flipped;
-            transform.Rotate(0f, 180f, 0f);
+            scale.x *= -1;
+            transform.localScale = scale;
             isFlipped = false;
         }
         else if (transform.position.x > player.position.x && !isFlipped)
         {
-            transform.localScale = flipped;
-            transform.Rotate(0f, 180f, 0f);
+            scale.x *= -1;
+            transform.localScale = scale;
             isFlipped = true;
         }
     }
@@ -122,5 +127,8 @@ public class Boss : MonoBehaviour
         transform.position = startPosition;
         currentHP = bossHP;
     }
+
+   
+
 
 }

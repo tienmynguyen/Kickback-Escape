@@ -12,7 +12,9 @@ public class BossZoneCheck2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             zoneCheck.triggered = false;
-            boss.isActivated = false; // Boss bắt đầu di chuyển
+
+            boss.ResetBoss();
+            boss.isActivated = false;
             autoWall1.SetActive(false);
         }
     }
