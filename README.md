@@ -27,7 +27,7 @@ To run the project:
 2. Open it using **Unity Hub**.
 3. Use Unity version `2021.x` or newer.
 4. Press the `Play` button in the Unity Editor to start the game.
-   <a href="https://mytomvn.itch.io/kickback-escape">Link to Play demo</a>
+   [![Play Kickback Escape Demo on itch.io](https://img.itch.zone/aW1hZ2UvMzU2NzEyNy8xODc1MTI0Ny5wbmc=/original/YkhCOz.png)](https://mytomvn.itch.io/kickback-escape)
 
 ## 🎮 Controls
 
