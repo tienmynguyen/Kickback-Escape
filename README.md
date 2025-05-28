@@ -41,12 +41,12 @@ To run the project:
 
 <table>
   <tr>
-    <td><img src="./Assets/Images/img1.jpg" width="200"/></td>
-    <td><img src="./Assets/Images/img2.jpg" width="200"/></td>
+    <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img1.png" width="250"/></td>
+    <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img2.png" width="250"/></td>
   </tr>
   <tr>
-    <td><img src="./Assets/Images/img3.jpg" width="200"/></td>
-    <td><img src="./Assets/Images/img4.jpg" width="200"/></td>
+    <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img3.png" width="250"/></td>
+    <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img4.png" width="250"/></td>
   </tr>
 </table>
 
