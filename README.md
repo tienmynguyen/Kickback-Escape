@@ -43,6 +43,7 @@ To run the project:
   <tr>
     <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img1.png" width="250"/></td>
     <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img2.png" width="250"/></td>
+    <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img5.png" width="250"/></td>
   </tr>
   <tr>
     <td><img src="https://raw.githubusercontent.com/tienmynguyen/Kickback-Escape/main/Assets/Images/img3.png" width="250"/></td>
