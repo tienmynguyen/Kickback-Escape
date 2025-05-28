@@ -9,16 +9,18 @@ public class AutoScrollCamera : MonoBehaviour
 
     void Update()
     {
+
         float currentX = transform.position.x;
         float targetX = currentX + scrollSpeed * Time.deltaTime;
 
         // Nếu người chơi vượt quá giới hạn
         if (player.position.x > currentX + maxAheadDistance)
         {
+
             float distance = player.position.x - (currentX + maxAheadDistance);
             targetX += distance * catchUpMultiplier * Time.deltaTime;
         }
-
+        float targetY = player.position.y;
         transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
     }
 }
