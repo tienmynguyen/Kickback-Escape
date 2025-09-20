@@ -1,10 +1,13 @@
-
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private Image healthSlider; // ⚡ Dùng Image chứ không phải Slider
     private Animator animator;
-    public int playerHp = 3;
+    public int maxHp = 5;
+    public int playerHp = 5;
     [SerializeField] public float recoilForce = 35f;
     [SerializeField] public GameObject bulletPrefab;
     [SerializeField] public Transform firePoint;
@@ -16,26 +19,34 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded = false;
     private Vector3 startPosition;
     private Rigidbody2D rb;
-    // Start is called before the first frame update
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
+
     void Start()
     {
-        playerHp = 3;
+        playerHp = maxHp;
 
         startPosition = transform.position;
         rb = GetComponent<Rigidbody2D>();
         remainingAirShots = maxAirShots;
         currentBulletImage.fillAmount = (float)remainingAirShots / (float)maxAirShots;
+
+        // ✅ Chỉ hiển thị máu ở Level 6
+        if (SceneManager.GetActiveScene().name == "Level 6" && healthSlider != null)
+        {
+            healthSlider.fillAmount = 1f; // đầy máu
+        }
+        else if (healthSlider != null)
+        {
+            healthSlider.gameObject.SetActive(false); // Ẩn máu ở màn khác
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0) && (isGrounded || remainingAirShots > 0))
         {
             Shoot();
@@ -45,7 +56,6 @@ public class PlayerController : MonoBehaviour
                 if (remainingAirShots < 99) remainingAirShots--;
                 currentBulletImage.fillAmount = (float)remainingAirShots / (float)maxAirShots;
             }
-
         }
 
         if (isGrounded)
@@ -53,24 +63,20 @@ public class PlayerController : MonoBehaviour
             remainingAirShots = maxAirShots;
             currentBulletImage.fillAmount = (float)remainingAirShots / (float)maxAirShots;
         }
-
     }
 
     void Shoot()
     {
-
         animator.SetTrigger("Shoot");
-
         SoundManager.Instance.PlaySound2D("bang");
-        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position).normalized;
 
+        Vector2 direction = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - firePoint.position).normalized;
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         bullet.GetComponent<Rigidbody2D>().AddForce(direction * 1000f);
 
         rb.AddForce(-direction * recoilForce, ForceMode2D.Impulse);
-        Debug.Log(-direction * recoilForce);
-
     }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Trap") && !isDead)
@@ -80,37 +86,37 @@ public class PlayerController : MonoBehaviour
             SaveManager.Instance.AddDeath();
             GameObject blood = Instantiate(bloodprefabs, transform.position, Quaternion.identity);
             Destroy(blood, 1f);
-            // Reset vị trí
+
+            if (SceneManager.GetActiveScene().name == "Level 8")
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
             transform.position = startPosition;
 
-            // Reset vận tốc (tránh bị trôi tiếp sau khi hồi sinh)
             if (rb != null)
             {
                 rb.velocity = Vector2.zero;
                 rb.angularVelocity = 0f;
             }
-
-            // (Tùy chọn) Thêm hiệu ứng, âm thanh, animation tại đây
-
         }
+
         if (other.CompareTag("Apple"))
         {
             SoundManager.Instance.PlaySound2D("collect");
-            maxAirShots = 999999999;
+            maxAirShots = -1;
             Destroy(other.gameObject);
-
-
             currentBulletImage.color = Color.yellow;
         }
+
         Invoke(nameof(ResetDeathState), 0.5f);
 
         if (other.CompareTag("Boss"))
         {
-
             TakeDamage();
         }
-
     }
+
     void ResetDeathState()
     {
         isDead = false;
@@ -119,18 +125,25 @@ public class PlayerController : MonoBehaviour
     public void SetGrounded(bool grounded)
     {
         isGrounded = grounded;
-
         if (grounded)
         {
             remainingAirShots = maxAirShots;
         }
     }
+
     public void TakeDamage()
     {
-        SoundManager.Instance.PlaySound2D("takedmg");
+        playerHp--;
+
+        // ✅ Cập nhật thanh máu (chỉ ở Level 6)
+        if (SceneManager.GetActiveScene().name == "Level 6" && healthSlider != null)
+        {
+            healthSlider.fillAmount = (float)playerHp / (float)maxHp;
+        }
+
         GameObject blood = Instantiate(bloodprefabs, transform.position, Quaternion.identity);
         Destroy(blood, 1f);
-        playerHp--;
+
         if (playerHp <= 0)
         {
             GameObject bosses = GameObject.FindGameObjectWithTag("Boss");
@@ -139,20 +152,24 @@ public class PlayerController : MonoBehaviour
             {
                 boss.ResetBoss();
             }
+
             SaveManager.Instance.AddDeath();
-            // Reset vị trí
+
             transform.position = startPosition;
 
-            // Reset vận tốc (tránh bị trôi tiếp sau khi hồi sinh)
             if (rb != null)
             {
                 rb.velocity = Vector2.zero;
                 rb.angularVelocity = 0f;
             }
-            playerHp = 3;
 
-            // (Tùy chọn) Thêm hiệu ứng, âm thanh, animation tại đây   
+            playerHp = maxHp;
+
+            // ✅ Reset máu đầy
+            if (SceneManager.GetActiveScene().name == "Level 6" && healthSlider != null)
+            {
+                healthSlider.fillAmount = 1f;
+            }
         }
     }
-
 }

@@ -9,6 +9,7 @@ TagManager:
   - Apple
   - Bullet
   - Boss
+  - fixedcamautoscroll
   layers:
   - Default
   - TransparentFX

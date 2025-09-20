@@ -9,18 +9,20 @@ public class AutoScrollCamera : MonoBehaviour
 
     void Update()
     {
-
         float currentX = transform.position.x;
         float targetX = currentX + scrollSpeed * Time.deltaTime;
 
-        // Nếu người chơi vượt quá giới hạn
+        // Nếu người chơi vượt quá giới hạn X
         if (player.position.x > currentX + maxAheadDistance)
         {
-
             float distance = player.position.x - (currentX + maxAheadDistance);
             targetX += distance * catchUpMultiplier * Time.deltaTime;
         }
-        float targetY = player.position.y;
-        transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
+
+        // 🚀 Camera luôn follow player theo trục Y
+       float targetY = Mathf.Lerp(transform.position.y, player.position.y, 5f * Time.deltaTime);
+
+        // Gán lại vị trí camera
+        transform.position = new Vector3(targetX, targetY, transform.position.z);
     }
 }
