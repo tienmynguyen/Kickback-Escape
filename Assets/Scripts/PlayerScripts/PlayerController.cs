@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Apple"))
         {
             SoundManager.Instance.PlaySound2D("collect");
-            maxAirShots = -1;
+            maxAirShots = 9999999; // Tăng số đạn vô hạn
             Destroy(other.gameObject);
             currentBulletImage.color = Color.yellow;
         }

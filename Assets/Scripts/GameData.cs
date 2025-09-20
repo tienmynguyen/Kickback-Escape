@@ -1,5 +1,8 @@
-
+#if UNITY_EDITOR
+using UnityEditor;
 using UnityEditor.PackageManager;
+#endif
+
 using UnityEngine;
 [System.Serializable]
 
