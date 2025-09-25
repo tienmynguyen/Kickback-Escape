@@ -342,7 +342,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7291746744035998880
 BoxCollider2D:
@@ -382,6 +382,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa7560dc419dc754e9e55197a8e7c3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthSlider: {fileID: 0}
+  maxHp: 5
   playerHp: 3
   recoilForce: 35
   bulletPrefab: {fileID: 4901623495429931218, guid: d09bdcca3d538aa4998e5a643ff541c7, type: 3}
